@@ -1,0 +1,21 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "drizzle-orm": "^0.44.5",
+    "drizzle-zod": "^0.8.3",
+    "zod": "^4.1.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

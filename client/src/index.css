@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Neon green palette matching screenshots */
+  --background: 0 0% 2%; /* almost black */
+  --foreground: 120 100% 78%; /* soft neon text */
+  --card: 0 0% 5%;
+  --card-foreground: 120 100% 75%;
+  --popover: 0 0% 4%;
+  --popover-foreground: 120 100% 82%;
+  --primary: 120 100% 56%; /* neon green (#39ff14 approx) */
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 10%;
+  --secondary-foreground: 120 100% 92%;
+  --muted: 0 0% 16%;
+  --muted-foreground: 120 15% 65%;
+  --accent: 120 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 120 100% 30%;
+  --input: 0 0% 10%;
+  --ring: 120 100% 56%;
+  --font-sans: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  --font-serif: Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  --radius: 0.375rem;
+}
+
+.dark {
+  --background: hsl(0 0% 2%);
+  --foreground: hsl(120 100% 85%);
+  --card: hsl(0 0% 6%);
+  --card-foreground: hsl(120 100% 80%);
+  --popover: hsl(0 0% 4%);
+  --popover-foreground: hsl(120 100% 85%);
+  --primary: hsl(120 100% 55%);
+  --primary-foreground: hsl(0 0% 0%);
+  --secondary: hsl(0 0% 12%);
+  --secondary-foreground: hsl(120 100% 95%);
+  --muted: hsl(0 0% 18%);
+  --muted-foreground: hsl(0 0% 65%);
+  --accent: hsl(120 100% 45%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(120 100% 30%);
+  --input: hsl(0 0% 10%);
+  --ring: hsl(120 100% 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-mono antialiased bg-background text-foreground overflow-x-hidden;
+    scroll-behavior: smooth;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .terminal-window {
+    @apply bg-card border border-border rounded-lg shadow-lg;
+    background: linear-gradient(145deg, hsl(0 0% 6%), hsl(0 0% 10%));
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.25), 0 0 4px rgba(57, 255, 20, 0.8) inset;
+  }
+  .terminal-header {
+    @apply bg-secondary border-b border-border px-4 py-2 flex items-center space-x-2;
+    background: linear-gradient(90deg, hsl(0 0% 10%), hsl(0 0% 6%));
+  }
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+  .terminal-dot-red {
+    @apply bg-red-500;
+  }
+  .terminal-dot-yellow {
+    @apply bg-yellow-500;
+  }
+  .terminal-dot-green {
+    @apply bg-green-500;
+  }
+  .hover-glow:hover {
+    text-shadow: 0 0 14px hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+  .section-border {
+    @apply border-l-4 border-primary pl-4;
+  }
+  .terminal-cursor::after {
+    content: '█';
+    animation: blink 1s step-end infinite;
+    color: hsl(var(--primary));
+  }
+  .matrix-char {
+    @apply absolute text-green-900 font-mono text-sm opacity-30;
+    animation: matrix 20s linear infinite;
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, hsl(120 100% 50%), hsl(120 100% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  .animate-matrix {
+    animation: matrix 20s linear infinite;
+  }
+  .animate-typewriter {
+    animation: typewriter 3s steps(40) 1s 1 normal both;
+  }
+  .text-shadow-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+@keyframes matrix {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}

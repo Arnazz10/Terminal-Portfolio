@@ -1,4 +1,4 @@
-# Terminal Portfolio
+# Terminal Portfolio-ls
 
 A modern, terminal-themed portfolio website built with React, TypeScript, and Express.js. Features a dark theme with neon green accents, matrix rain background, and a command-line interface aesthetic.
 

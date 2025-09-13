@@ -94,45 +94,46 @@ export default function Home() {
   const filterOptions = ["All", ...allCategories, ...allTechnologies.slice(0, 6)];
 
   const skills = [
+    "Java/Spring Boot",
+    "UI-UX Design",
     "JavaScript/TypeScript",
     "React/Next.js",
     "Node.js/Express",
     "Python/Django",
     "PostgreSQL/MongoDB",
-    "AWS/Docker"
+    "AWS/Docker",
+    "Linux/Kernel Dev",
+    "Open Source"
   ];
 
   const experiences = [
     {
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Inc.",
-      period: "2022 - Present",
+      title: "Web Designer",
+      company: "Xtenal Technologies",
+      period: "Mar 2025 - May 2025",
       responsibilities: [
-        "Led development of microservices architecture serving 100k+ users",
-        "Implemented CI/CD pipelines reducing deployment time by 60%",
-        "Mentored junior developers and conducted code reviews"
+        "Designed and optimized 10+ web applications, enhancing user engagement by 60% through improved UI/UX designs.",
+        "Led the front-end development of 5+ innovative tech solutions, reducing load times by 40% and improving responsiveness across all devices."
       ],
       current: true
     },
     {
-      title: "Full Stack Developer",
-      company: "StartupXYZ",
-      period: "2020 - 2022",
+      title: "Design Intern",
+      company: "Vague28 OPC PVT LTD",
+      period: "Nov 2024 - Jan 2025",
       responsibilities: [
-        "Built scalable web applications using React and Node.js",
-        "Integrated third-party APIs and payment systems",
-        "Optimized database queries improving performance by 40%"
+        "Created 50+ graphic designs for song promotions, leading to a 35% increase in audience engagement across social media platforms.",
+        "Designed and executed 15+ targeted marketing campaigns for Indie Music artists, boosting their social media reach by 40%."
       ],
       current: false
     },
     {
-      title: "Frontend Developer",
-      company: "WebSolutions Ltd.",
-      period: "2018 - 2020",
+      title: "Startup Intern",
+      company: "Stealth Startup",
+      period: "Jun 2024 - Sep 2024",
       responsibilities: [
-        "Developed responsive web applications using modern JS frameworks",
-        "Collaborated with UX/UI designers to implement pixel-perfect designs",
-        "Improved page load times by 50% through optimization techniques"
+        "HR & Talent Acquisition – Led the screening and onboarding of 45+ candidates, optimizing the recruitment pipeline and reducing hiring time by 22% through efficient evaluation and outreach strategies.",
+        "Data Management & Analysis – Handled and structured 56% of raw user data, implementing improved organization processes that enhanced accessibility and security, reducing retrieval time by 30%."
       ],
       current: false
     }
@@ -149,15 +150,15 @@ export default function Home() {
             <div className="space-y-4">
               <div className="text-accent" data-testid="whoami-command">$ whoami</div>
               <div className="text-2xl sm:text-4xl font-bold" data-testid="developer-name">
-                <span className="text-primary">John</span> <span className="text-accent">Developer</span>
+                <span className="text-primary">Arnab</span> <span className="text-accent">Kr Mal</span>
               </div>
               <div className="text-lg text-muted-foreground" data-testid="developer-title">
-                Full Stack Developer | Open Source Enthusiast
+               Designer | Full Stack Developer | Open Source Enthusiast
               </div>
               <div className="space-y-2 text-sm" data-testid="developer-description">
-                <div><span className="text-accent">{'>'}</span> Specializing in modern web technologies</div>
-                <div><span className="text-accent">{'>'}</span> Building scalable applications and user experiences</div>
-                <div><span className="text-accent">{'>'}</span> Passionate about clean code and innovation</div>
+                <div><span className="text-accent">{'>'}</span> Designing intuitive interfaces and experiences</div>
+                <div><span className="text-accent">{'>'}</span> Building full-stack solutions with modern technologies</div>
+                <div><span className="text-accent">{'>'}</span> Contributing to open source and Linux kernel development  </div>
               </div>
               <div className="mt-6 flex flex-wrap gap-4" data-testid="hero-actions">
                 <Button 
@@ -194,12 +195,12 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-4" data-testid="about-description">
                   <p className="text-muted-foreground leading-relaxed">
-                    Passionate full-stack developer with 5+ years of experience building modern web applications. 
-                    I love turning complex problems into simple, beautiful solutions using cutting-edge technologies.
+                  Designer with 3+ years of experience and a full-stack developer specializing in Java technologies. 
+                  Also a Linux developer and open-source contributor, passionate about building efficient and scalable solutions. 
                   </p>
                   <div className="space-y-2" data-testid="about-details">
-                    <div><span className="text-primary">Location:</span> San Francisco, CA</div>
-                    <div><span className="text-primary">Focus:</span> Full-Stack Development</div>
+                    <div><span className="text-primary">Location:</span> Chennai, India</div>
+                    <div><span className="text-primary">Focus:</span> Designing & Full-Stack Development</div>
                     <div><span className="text-primary">Status:</span> <span className="text-accent">Available for opportunities</span></div>
                   </div>
                 </div>
@@ -347,11 +348,20 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button className="bg-primary text-primary-foreground hover:bg-accent" data-testid="button-download-resume">
+                      <Button 
+                        className="bg-primary text-primary-foreground hover:bg-accent" 
+                        data-testid="button-download-resume"
+                        onClick={() => window.open('https://drive.google.com/uc?export=download&id=18A4bHOS55iD8Ehj9jbLfzpLphnrQz8Be', '_blank')}
+                      >
                         <Download className="w-4 h-4 mr-2" />
                         Download PDF
                       </Button>
-                      <Button variant="outline" className="border-border hover:bg-secondary" data-testid="button-view-resume">
+                      <Button 
+                        variant="outline" 
+                        className="border-border hover:bg-secondary" 
+                        data-testid="button-view-resume"
+                        onClick={() => window.open('https://drive.google.com/file/d/18A4bHOS55iD8Ehj9jbLfzpLphnrQz8Be/view?usp=sharing', '_blank')}
+                      >
                         <Eye className="w-4 h-4 mr-2" />
                         Quick View
                       </Button>
@@ -361,7 +371,7 @@ export default function Home() {
                   {/* Resume Preview */}
                   <div className="mt-8 bg-background rounded-lg p-6 border border-border" data-testid="resume-preview">
                     <div className="text-center mb-6">
-                      <h4 className="text-xl font-bold text-primary" data-testid="resume-name">John Developer</h4>
+                      <h4 className="text-xl font-bold text-primary" data-testid="resume-name">Arnab Kumar Mal</h4>
                       <p className="text-accent" data-testid="resume-role">Full Stack Developer</p>
                       <p className="text-sm text-muted-foreground" data-testid="resume-contact">john.developer@email.com | +1 (555) 123-4567</p>
                     </div>
@@ -418,29 +428,29 @@ export default function Home() {
                   <div className="space-y-4 mb-8">
                     <div className="flex items-center space-x-3" data-testid="contact-email">
                       <Mail className="w-5 h-5 text-accent" />
-                      <a href="mailto:john.developer@email.com" className="hover-glow transition-all">
-                        john.developer@email.com
+                      <a href="mailto:arnabmal665@email.com" className="hover-glow transition-all">
+                        arnabmal665@email.com
                       </a>
                     </div>
                     <div className="flex items-center space-x-3" data-testid="contact-linkedin">
                       <Linkedin className="w-5 h-5 text-accent" />
-                      <a href="#" className="hover-glow transition-all">linkedin.com/in/johndeveloper</a>
+                      <a href="https://linkedin.com/in/arnab-mal-74454127a" target="_blank" rel="noreferrer" className="hover-glow transition-all">linkedin.com/in/arnab-mal-74454127a</a>
                     </div>
                     <div className="flex items-center space-x-3" data-testid="contact-github">
                       <Github className="w-5 h-5 text-accent" />
-                      <a href="#" className="hover-glow transition-all">github.com/johndeveloper</a>
+                      <a href="https://github.com/Arnazz10" target="_blank" rel="noreferrer" className="hover-glow transition-all">github.com/Arnazz10</a>
                     </div>
                     <div className="flex items-center space-x-3" data-testid="contact-twitter">
                       <Twitter className="w-5 h-5 text-accent" />
-                      <a href="#" className="hover-glow transition-all">@johndeveloper</a>
+                      <a href="https://x.com/arnabmaal" target="_blank" rel="noreferrer" className="hover-glow transition-all">@arnabmaal</a>
                     </div>
                   </div>
                   <Card className="bg-card border border-border" data-testid="contact-status">
                     <div className="p-4">
                       <div className="text-sm text-muted-foreground space-y-2">
                         <div><span className="text-accent">{'>'}</span> Status: Available for opportunities</div>
-                        <div><span className="text-accent">{'>'}</span> Location: San Francisco, CA</div>
-                        <div><span className="text-accent">{'>'}</span> Timezone: PST (UTC-8)</div>
+                        <div><span className="text-accent">{'>'}</span> Location: Chennai, India</div>
+                        <div><span className="text-accent">{'>'}</span> Timezone: IST (UTC+5:30)</div>
                         <div><span className="text-accent">{'>'}</span> Response time: &lt; 24 hours</div>
                       </div>
                     </div>
@@ -464,7 +474,7 @@ export default function Home() {
                 <span className="text-accent">$</span> echo "Built with passion and lots of coffee ☕"
               </div>
               <div className="text-sm text-muted-foreground">
-                © 2024 John Developer. All rights reserved.
+                © 2024 AKM. All rights reserved.
               </div>
             </div>
           </TerminalWindow>

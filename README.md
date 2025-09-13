@@ -15,7 +15,7 @@ A modern, terminal-themed portfolio website built with React, TypeScript, and Ex
   - Resume download and preview
   - Contact form with validation
 - **Modern Tech Stack**: React, TypeScript, Tailwind CSS, Express.js
-- **Real-time Contact Form**: Backend API for form submissions
+- **Real-time Contact Form**: Backend API for form submissions in it
 
 ## 🛠️ Tech Stack
 

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "installCommand": "npm ci && cd client && npm ci",
+  "buildCommand": "cd client && npm run build",
+  "outputDirectory": "client/dist",
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "github": { "silent": true }
+}

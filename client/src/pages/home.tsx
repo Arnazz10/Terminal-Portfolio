@@ -9,51 +9,50 @@ import { Github, ExternalLink, Download, Eye, Mail, Linkedin, Twitter } from "lu
 
 const projectsData = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include real-time inventory, user authentication, and admin dashboard.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    title: "UniWise - Career Enablement Platform",
     category: "Full-Stack",
-    github: "#",
-    demo: "#"
+    description: "Full-stack career enablement platform offering premium video courses, 1-on-1 expert calls, and personalized career guidance. Features real-time pricing, secure payments, and admin oversight.",
+    technologies: ["React", "Node.js", "MongoDB", "TypeScript", "Razorpay", "JWT", "Docker", "REST API"],
+    github: "https://github.com/Arnazz10/Uniwise",
+    demo: "https://uniwise-frontend.vercel.app/"
   },
   {
-    title: "Task Management App", 
-    description: "Collaborative task management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    technologies: ["Next.js", "TypeScript", "Prisma", "Socket.io"],
-    category: "Full-Stack",
-    github: "#",
-    demo: "#"
+    title: "CropXpert - ML Crop Recommendation",
+    category: "IoT",
+    description: "Machine Learning-based crop recommendation system leveraging 20,000+ agricultural data points to enhance farmer decision-making and improve crop yield by 35%.",
+    technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "FastAPI", "Ipywidgets"],
+    github: "https://github.com/Arnazz10/CropXpert",
+    demo: "https://crop-xpert.vercel.app/"
   },
   {
-    title: "Analytics Dashboard",
-    description: "Real-time analytics dashboard with interactive charts, data visualization, and comprehensive reporting capabilities.",
-    technologies: ["Vue.js", "D3.js", "Python", "Redis"],
-    category: "Frontend",
-    github: "#",
-    demo: "#"
-  },
-  {
-    title: "Mobile Banking App",
-    description: "Secure mobile banking application with biometric authentication, transaction history, and budget tracking features.",
-    technologies: ["React Native", "Node.js", "MongoDB", "JWT"],
-    category: "Mobile",
-    github: "#",
-    demo: "#"
-  },
-  {
-    title: "API Gateway Service",
-    description: "Microservices API gateway with authentication, rate limiting, load balancing, and monitoring capabilities.",
-    technologies: ["Node.js", "Express", "Redis", "Docker"],
+    title: "Reo10bot - Telegram Companion",
     category: "Backend",
-    github: "#",
+    description: "Friendly conversational Telegram bot with human-like responses, built with modern async architecture and custom response engine for engaging interactions.",
+    technologies: ["Python", "python-telegram-bot", "Async/Await"],
+    github: "https://github.com/Arnazz10/Reo10bot",
+    demo: "https://t.me/Reo10bot"
+  },
+  {
+    title: "FitFusion Pro - AI Fitness Platform",
+    category: "Full-Stack",
+    description: "Intelligent fitness platform with real-time posture detection using ML models. Features workout tracking, AI chatbot, nutrition plans, and community engagement.",
+    technologies: ["React.js", "TypeScript", "Node.js", "MongoDB", "Python", "OpenCV", "MediaPipe", "Socket.io"],
+    github: "https://github.com/Arnazz10/Fit_Fusion",
+  },
+  {
+    title: "Finora - AI Loan Approval System",
+    category: "Full-Stack",
+    description: "AI-driven loan approval platform with cutting-edge technologies for credit scoring, fraud detection, and risk profiling with real-time approvals and transparency.",
+    technologies: ["React.js", "Next.js", "Tailwind", "Firebase", "Python", "LNNs", "GNNs", "LLMs"],
+    github: "https://github.com/Arnazz10/Finora-Loan-Approval-application-",
     demo: "#"
   },
   {
-    title: "Portfolio Website",
-    description: "Responsive portfolio website with terminal theme, contact form, and project showcase built with modern web technologies.",
-    technologies: ["React", "TypeScript", "Tailwind", "Express"],
-    category: "Frontend",
-    github: "#",
+    title: "Open Journal - Terminal Diary",
+    category: "CLI Tools",
+    description: "Open-source, terminal-based daily journal system for documenting personal growth, built with plain-text files and bash scripting for simplicity.",
+    technologies: ["Bash", "Git", "Linux", "Markdown"],
+    github: "https://github.com/Arnazz10/open-journal",
     demo: "#"
   }
 ];
@@ -61,8 +60,9 @@ const projectsData = [
 export default function Home() {
   const [displayText, setDisplayText] = useState("");
   const fullText = "Ready for input";
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [filteredProjects, setFilteredProjects] = useState(projectsData);
+  const [command, setCommand] = useState("");
+  const [sectionPop, setSectionPop] = useState<Record<string, boolean>>({});
+  
 
   useEffect(() => {
     let i = 0;
@@ -77,21 +77,32 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    if (selectedFilter === "All") {
-      setFilteredProjects(projectsData);
-    } else {
-      const filtered = projectsData.filter(project => 
-        project.category === selectedFilter || 
-        project.technologies.some(tech => tech.toLowerCase().includes(selectedFilter.toLowerCase()))
-      );
-      setFilteredProjects(filtered);
-    }
-  }, [selectedFilter]);
+  const triggerSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    setSectionPop(prev => ({ ...prev, [sectionId]: true }));
+    setTimeout(() => setSectionPop(prev => ({ ...prev, [sectionId]: false })), 900);
+  };
 
-  const allTechnologies = Array.from(new Set(projectsData.flatMap(p => p.technologies)));
-  const allCategories = Array.from(new Set(projectsData.map(p => p.category)));
-  const filterOptions = ["All", ...allCategories, ...allTechnologies.slice(0, 6)];
+  const runCommand = () => {
+    const value = command.trim().toLowerCase();
+    if (!value) return;
+    const map: Record<string, string> = {
+      about: 'about',
+      projects: 'projects',
+      project: 'projects',
+      experience: 'experience',
+      exp: 'experience',
+      resume: 'resume',
+      cv: 'resume',
+      contact: 'contact',
+      contacts: 'contact'
+    };
+    const key = Object.keys(map).find(k => value.includes(k));
+    if (key) {
+      triggerSection(map[key]);
+    }
+    setCommand("");
+  };
 
   const skills = [
     "Java/Spring Boot",
@@ -178,7 +189,17 @@ export default function Home() {
                 </Button>
               </div>
               <div className="mt-4 text-sm text-muted-foreground" data-testid="terminal-cursor">
-                <span className="terminal-cursor">{displayText}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-accent">$</span>
+                  <input
+                    value={command}
+                    onChange={(e) => setCommand(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') runCommand(); }}
+                    placeholder={displayText}
+                    className="bg-transparent outline-none border-b border-border focus:border-primary caret-accent w-full max-w-xs"
+                    aria-label="terminal command input"
+                  />
+                </div>
               </div>
             </div>
           </TerminalWindow>
@@ -188,7 +209,7 @@ export default function Home() {
       <section id="about" className="py-20 px-4 scroll-mt-24" data-testid="about-section">
         <div className="container mx-auto max-w-4xl">
           <TerminalWindow>
-            <div className="section-border">
+            <div className={`section-border ${sectionPop['about'] ? 'ring-2 ring-primary animate-pulse' : ''}`}>
               <h2 className="text-2xl font-bold mb-6" data-testid="about-title">
                 <span className="text-accent">$</span> cat about.txt
               </h2>
@@ -224,38 +245,15 @@ export default function Home() {
       <section id="projects" className="py-20 px-4 scroll-mt-24" data-testid="projects-section">
         <div className="container mx-auto max-w-6xl">
           <TerminalWindow>
-            <div className="section-border">
+            <div className={`section-border ${sectionPop['projects'] ? 'ring-2 ring-primary animate-pulse' : ''}`}>
               <h2 className="text-2xl font-bold mb-8" data-testid="projects-title">
                 <span className="text-accent">$</span> ls -la projects/
               </h2>
 
-              <div className="mb-8" data-testid="project-filters">
-                <h3 className="text-sm text-muted-foreground mb-4">$ filter --category</h3>
-                <div className="flex flex-wrap gap-2">
-                  {filterOptions.map((filter) => (
-                    <Button
-                      key={filter}
-                      variant={selectedFilter === filter ? "default" : "outline"}
-                      size="sm"
-                      className={`text-xs ${
-                        selectedFilter === filter 
-                          ? "bg-primary text-primary-foreground" 
-                          : "border-border hover:bg-secondary"
-                      }`}
-                      onClick={() => setSelectedFilter(filter)}
-                      data-testid={`filter-${filter.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                    >
-                      {filter}
-                    </Button>
-                  ))}
-                </div>
-                <div className="text-xs text-muted-foreground mt-2">
-                  <span className="text-accent">{'>'}</span> Showing {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
-                </div>
-              </div>
+              
 
               <div className="grid lg:grid-cols-2 gap-6">
-                {filteredProjects.map((project, index) => (
+                {projectsData.map((project, index) => (
                   <Card key={index} className="border border-border bg-card hover:border-primary transition-colors" data-testid={`project-card-${index}`}>
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-4">
@@ -264,9 +262,11 @@ export default function Home() {
                           <a href={project.github} target="_blank" rel="noreferrer" className="text-accent hover:text-primary transition-colors hover-glow" data-testid={`project-github-${index}`}>
                             <Github className="w-5 h-5" />
                           </a>
-                          <a href={project.demo} target="_blank" rel="noreferrer" className="text-accent hover:text-primary transition-colors hover-glow" data-testid={`project-demo-${index}`}>
-                            <ExternalLink className="w-5 h-5" />
-                          </a>
+                          {project.demo && project.demo !== '#' && (
+                            <a href={project.demo} target="_blank" rel="noreferrer" className="text-accent hover:text-primary transition-colors hover-glow" data-testid={`project-demo-${index}`}>
+                              <ExternalLink className="w-5 h-5" />
+                            </a>
+                          )}
                         </div>
                       </div>
                       <div className="mb-2">
@@ -289,7 +289,7 @@ export default function Home() {
                 ))}
               </div>
               <div className="mt-8 text-center">
-                <a href="#" className="text-accent hover:text-primary transition-colors" data-testid="link-github-all">
+                <a href="https://github.com/Arnazz10?tab=repositories" target="_blank" rel="noreferrer" className="text-accent hover:text-primary transition-colors" data-testid="link-github-all">
                   <Github className="inline w-5 h-5 mr-2" />View all projects on GitHub →
                 </a>
               </div>
@@ -302,7 +302,7 @@ export default function Home() {
       <section id="experience" className="py-20 px-4 scroll-mt-24" data-testid="experience-section">
         <div className="container mx-auto max-w-4xl">
           <TerminalWindow>
-            <div className="section-border">
+            <div className={`section-border ${sectionPop['experience'] ? 'ring-2 ring-primary animate-pulse' : ''}`}>
               <h2 className="text-2xl font-bold mb-8" data-testid="experience-title">
                 <span className="text-accent">$</span> cat experience.log
               </h2>
@@ -333,7 +333,7 @@ export default function Home() {
       <section id="resume" className="py-20 px-4 scroll-mt-24" data-testid="resume-section">
         <div className="container mx-auto max-w-4xl">
           <TerminalWindow>
-            <div className="section-border">
+            <div className={`section-border ${sectionPop['resume'] ? 'ring-2 ring-primary animate-pulse' : ''}`}>
               <h2 className="text-2xl font-bold mb-8" data-testid="resume-title">
                 <span className="text-accent">$</span> ./resume.pdf --view
               </h2>
@@ -357,7 +357,7 @@ export default function Home() {
                         Download PDF
                       </Button>
                       <Button 
-                        variant="outline" 
+                        variant="outline"   
                         className="border-border hover:bg-secondary" 
                         data-testid="button-view-resume"
                         onClick={() => window.open('https://drive.google.com/file/d/18A4bHOS55iD8Ehj9jbLfzpLphnrQz8Be/view?usp=sharing', '_blank')}
@@ -373,33 +373,35 @@ export default function Home() {
                     <div className="text-center mb-6">
                       <h4 className="text-xl font-bold text-primary" data-testid="resume-name">Arnab Kumar Mal</h4>
                       <p className="text-accent" data-testid="resume-role">Full Stack Developer</p>
-                      <p className="text-sm text-muted-foreground" data-testid="resume-contact">john.developer@email.com | +1 (555) 123-4567</p>
+                      <p className="text-sm text-muted-foreground" data-testid="resume-contact">arnabmal665@gmail.com | +91 9434366693</p>
                     </div>
                     
                     <div className="grid md:grid-cols-2 gap-6 text-sm">
-                      <div data-testid="resume-left-column">
+                      <div data-testid="resume-summary">
                         <h5 className="font-semibold text-primary mb-2">Summary</h5>
                         <p className="text-muted-foreground mb-4">
-                          Experienced full-stack developer with 5+ years in building scalable web applications...
+                        Designer and full-stack Java developer, Linux contributor, and open-source enthusiast passionate about crafting intuitive experiences and scalable solutions.
                         </p>
-                        
-                        <h5 className="font-semibold text-primary mb-2">Education</h5>
-                        <div className="text-muted-foreground">
-                          <div>B.S. Computer Science</div>
-                          <div className="text-xs">Stanford University, 2018</div>
-                        </div>
                       </div>
-                      
-                      <div data-testid="resume-right-column">
+                      <div data-testid="resume-skills">
                         <h5 className="font-semibold text-primary mb-2">Key Skills</h5>
                         <div className="text-muted-foreground mb-4">
-                          JavaScript, TypeScript, React, Node.js, Python, PostgreSQL, AWS, Docker...
+                          Java, SpringBoot UI-UX, Linux-Kernel, JavaScript, TypeScript, React, Node.js, Python, C/C++, ML, Open Source, PostgreSQL, AWS, Docker...
                         </div>
-                        
+                      </div>
+                      <div data-testid="resume-education">
+                        <h5 className="font-semibold text-primary mb-2">Education</h5>
+                        <div className="text-muted-foreground">
+                          <div>B.Tech CSE w/s AIML</div>
+                          <div className="text-xs">SRM University, 2027</div>
+                        </div>
+                      </div>
+                      <div data-testid="resume-certifications">
                         <h5 className="font-semibold text-primary mb-2">Certifications</h5>
                         <div className="text-muted-foreground text-xs">
-                          <div>AWS Certified Developer</div>
-                          <div>Google Cloud Professional</div>
+                          <div>NPTEL - JAVA Certified</div>
+                          <div>Google Cloud - GenAI</div>
+                          <div>MATLAB Certified</div>
                         </div>
                       </div>
                     </div>
@@ -415,7 +417,7 @@ export default function Home() {
       <section id="contact" className="py-20 px-4 scroll-mt-24" data-testid="contact-section">
         <div className="container mx-auto max-w-4xl">
           <TerminalWindow>
-            <div className="section-border">
+            <div className={`section-border ${sectionPop['contact'] ? 'ring-2 ring-primary animate-pulse' : ''}`}>
               <h2 className="text-2xl font-bold mb-8" data-testid="contact-title">
                 <span className="text-accent">$</span> ./contact.sh --init
               </h2>

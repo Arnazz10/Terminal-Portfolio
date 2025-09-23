@@ -8,7 +8,7 @@ A modern, terminal-themed portfolio website built with React, TypeScript, and Ex
 - **Matrix Rain**: Animated background with falling characters
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
 - **Interactive Sections**:
-  - Hero section with animated typing effect
+  - Hero section with animated typing 
   - About section with skills showcase
   - Projects section with filtering capabilities
   - Experience timeline

@@ -4,7 +4,7 @@ A modern, terminal-themed portfolio website built with React, TypeScript, and Ex
 
 ## 🚀 Features
 
-- **Terminal Interface**: Command-line inspired UI with terminal windows and prompts
+- **Terminal Interface**: Command-line inspired UI with terminal windows 
 - **Matrix Rain**: Animated background with falling characters
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
 - **Interactive Sections**:

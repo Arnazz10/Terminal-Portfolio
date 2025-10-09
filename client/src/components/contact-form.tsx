@@ -2,13 +2,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 import { Send, CheckCircle } from "lucide-react";
 
 const insertContactMessageSchema = z.object({
@@ -22,8 +21,8 @@ export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
 
 export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const queryClient = useQueryClient();
 
   const form = useForm<InsertContactMessage>({
     resolver: zodResolver(insertContactMessageSchema),
@@ -35,35 +34,40 @@ export function ContactForm() {
     },
   });
 
-  const submitMessage = useMutation({
-    mutationFn: async (data: InsertContactMessage) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      const result = await response.json();
-      if (!result.success) {
-        throw new Error(result.message || "Failed to send message");
-      }
-      return result;
-    },
-    onSuccess: () => {
+  const onSubmit = async (data: InsertContactMessage) => {
+    setIsLoading(true);
+    try {
+      // EmailJS configuration - replace with your actual values
+      const serviceId = "service_your_service_id"; // Replace with your EmailJS service ID
+      const templateId = "template_your_template_id"; // Replace with your EmailJS template ID
+      const publicKey = "your_public_key"; // Replace with your EmailJS public key
+
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        subject: data.subject,
+        message: data.message,
+        to_email: "arnabmal665@gmail.com", // Your email
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
       setIsSubmitted(true);
       form.reset();
       toast({
         title: "Message sent successfully!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
-      queryClient.invalidateQueries({ queryKey: ["/api/contact"] });
-    },
-    onError: (error: Error) => {
+    } catch (error) {
+      console.error("EmailJS error:", error);
       toast({
         title: "Failed to send message",
-        description: error.message || "Please try again later.",
+        description: "Please try again later or contact me directly at arnabmal665@gmail.com",
         variant: "destructive",
       });
-    },
-  });
-
-  const onSubmit = (data: InsertContactMessage) => {
-    submitMessage.mutate(data);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -168,11 +172,11 @@ export function ContactForm() {
           />
           <Button 
             type="submit" 
-            disabled={submitMessage.isPending}
+            disabled={isLoading}
             className="bg-primary text-primary-foreground hover:bg-accent w-full"
             data-testid="button-submit-contact"
           >
-            {submitMessage.isPending ? (
+            {isLoading ? (
               <>
                 <span className="animate-spin mr-2">⚡</span>
                 Sending...

@@ -38,9 +38,13 @@ export function ContactForm() {
     setIsLoading(true);
     try {
       // EmailJS configuration - replace with your actual values
-      const serviceId = "service_your_service_id"; // Replace with your EmailJS service ID
-      const templateId = "template_your_template_id"; // Replace with your EmailJS template ID
-      const publicKey = "your_public_key"; // Replace with your EmailJS public key
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS environment variables are missing");
+      }
 
       const templateParams = {
         from_name: data.name,

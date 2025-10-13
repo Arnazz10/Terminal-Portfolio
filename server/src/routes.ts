@@ -35,41 +35,7 @@ setInterval(() => {
 }, 60 * 1000);
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  app.post("/api/contact", async (req, res) => {
-    try {
-      const clientIp = (req as any).ip || (req as any).connection?.remoteAddress || 'unknown';
-      if (!checkRateLimit(clientIp)) {
-        return res.status(429).json({
-          success: false,
-          message: "Too many requests. Please try again later."
-        });
-      }
-      const validatedData = insertContactMessageSchema.parse(req.body);
-      await storage.createContactMessage(validatedData as any);
-      res.json({ 
-        success: true, 
-        message: "Message sent successfully!" 
-      });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(400).json({ 
-          success: false, 
-          message: "Please check your input and try again.",
-          errors: error.errors.map(err => ({
-            field: err.path.join('.'),
-            message: err.message
-          }))
-        });
-      } else {
-        console.error("Contact form error:", error);
-        res.status(500).json({ 
-          success: false, 
-          message: "Unable to send message. Please try again later." 
-        });
-      }
-    }
-  });
-
+  // Contact endpoint no longer required (using EmailJS on the client).
   const httpServer = createServer(app);
   return httpServer;
 }

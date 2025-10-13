@@ -156,11 +156,9 @@ Update the following files to customize your portfolio:
 - `client/tailwind.config.js` - Tailwind configuration
 - Individual component files for component-specific styles
 
-## 🔧 API Endpoints
+## 🔧 Contact Form
 
-- `POST /api/contact` - Submit contact form
-  - Body: `{ name, email, subject, message }`
-  - Response: `{ success: boolean, message: string }`
+The contact form uses EmailJS on the client; no backend endpoint is required.
 
 ## 🚀 Deployment
 

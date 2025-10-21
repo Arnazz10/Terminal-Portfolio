@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertContactMessageSchema } from "../../shared/src/schema";
+import { storage } from "./storage.js";
+import { insertContactMessageSchema } from "../../shared/dist/schema.js";
 import { z } from "zod";
 
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();

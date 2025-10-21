@@ -17,20 +17,18 @@ const projectsData = [
     demo: "https://uniwise-frontend.vercel.app/"
   },
   {
-    title: "CropXpert - ML Crop Recommendation",
-    category: "IoT",
-    description: "Machine Learning-based crop recommendation system leveraging 20,000+ agricultural data points to enhance farmer decision-making and improve crop yield by 35%.",
-    technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "FastAPI", "Ipywidgets"],
-    github: "https://github.com/Arnazz10/CropXpert",
-    demo: "https://crop-xpert.vercel.app/"
+    title: "SuperDesign - AI-Driven Design Platform",
+    category: "Full-Stack",
+    description: "Built an AI-driven design platform with React-Vite and Three.js, accelerating UI component creation by 70%. Integrated Figma and Framer plugins using MCP SDK and tRPC backend, reducing API latency by 40%.",
+    technologies: ["React-Vite", "TypeScript", "Three.js", "Node.js", "tRPC", "Figma API", "Framer", "MCP SDK", "Prisma ORM", "Vercel"],
+    github: "https://github.com/Arnazz10/superdesign"
   },
   {
     title: "Reo10bot - Telegram Companion",
     category: "Backend",
     description: "Friendly conversational Telegram bot with human-like responses, built with modern async architecture and custom response engine for engaging interactions.",
     technologies: ["Python", "python-telegram-bot", "Async/Await"],
-    github: "https://github.com/Arnazz10/Reo10bot",
-    demo: "https://t.me/Reo10bot"
+    github: "https://github.com/Arnazz10/Reo10bot"
   },
   {
     title: "FitFusion Pro - AI Fitness Platform",
@@ -44,16 +42,14 @@ const projectsData = [
     category: "Full-Stack",
     description: "AI-driven loan approval platform with cutting-edge technologies for credit scoring, fraud detection, and risk profiling with real-time approvals and transparency.",
     technologies: ["React.js", "Next.js", "Tailwind", "Firebase", "Python", "LNNs", "GNNs", "LLMs"],
-    github: "https://github.com/Arnazz10/Finora-Loan-Approval-application-",
-    demo: "#"
+    github: "https://github.com/Arnazz10/Finora-Loan-Approval-application-"
   },
   {
     title: "Open Journal - Terminal Diary",
     category: "CLI Tools",
     description: "Open-source, terminal-based daily journal system for documenting personal growth, built with plain-text files and bash scripting for simplicity.",
     technologies: ["Bash", "Git", "Linux", "Markdown"],
-    github: "https://github.com/Arnazz10/open-journal",
-    demo: "#"
+    github: "https://github.com/Arnazz10/open-journal"
   }
 ];
 
@@ -351,7 +347,7 @@ export default function Home() {
                       <Button 
                         className="bg-primary text-primary-foreground hover:bg-accent" 
                         data-testid="button-download-resume"
-                        onClick={() => window.open('https://drive.google.com/uc?export=download&id=18A4bHOS55iD8Ehj9jbLfzpLphnrQz8Be', '_blank')}
+                        onClick={() => window.open('https://drive.google.com/uc?export=download&id=1qY-0bg3FjAsCF4GFXLx54k97BVs5tf8J', '_blank')}
                       >
                         <Download className="w-4 h-4 mr-2" />
                         Download PDF
@@ -360,7 +356,7 @@ export default function Home() {
                         variant="outline"   
                         className="border-border hover:bg-secondary" 
                         data-testid="button-view-resume"
-                        onClick={() => window.open('https://drive.google.com/file/d/18A4bHOS55iD8Ehj9jbLfzpLphnrQz8Be/view?usp=sharing', '_blank')}
+                        onClick={() => window.open('https://drive.google.com/file/d/1qY-0bg3FjAsCF4GFXLx54k97BVs5tf8J/view?usp=sharing', '_blank')}
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         Quick View

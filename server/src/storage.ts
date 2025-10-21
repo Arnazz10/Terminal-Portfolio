@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type ContactMessage, type InsertContactMessage } from "../../shared/src/schema";
+import { type User, type InsertUser, type ContactMessage, type InsertContactMessage } from "../../shared/dist/schema.js";
 import { randomUUID } from "crypto";
 
 export interface IStorage {
@@ -30,7 +30,12 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id } as User;
+    // Ensure fields are strings — some inputs can be Buffer-like when inferred from generated types.
+    const user: User = {
+      id,
+      username: typeof (insertUser as any).username === "string" ? (insertUser as any).username : String((insertUser as any).username),
+      password: typeof (insertUser as any).password === "string" ? (insertUser as any).password : String((insertUser as any).password),
+    } as User;
     this.users.set(id, user);
     return user;
   }

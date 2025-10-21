@@ -7,6 +7,8 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Error overlay (populated by client JS when runtime errors occur) -->
+    <div id="error-overlay" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.85);color:#fff;padding:20px;z-index:9999;overflow:auto;font-family:monospace;"></div>
     <!-- Import map removed for static build; Parcel alias handles '@/'. -->
     <script type="module" src="/src/main.tsx"></script>
   </body>

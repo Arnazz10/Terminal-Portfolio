@@ -4,7 +4,8 @@
   "buildCommand": "cd client && npm run build",
   "outputDirectory": "client/dist",
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "(.*)", "dest": "/index.html" }
   ],
   "github": { "silent": true }
 }

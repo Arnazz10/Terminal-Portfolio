@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import emailjs from "@emailjs/browser";
+// Email sending removed — contact form is now frontend-only (simulated send)
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -37,36 +37,19 @@ export function ContactForm() {
   const onSubmit = async (data: InsertContactMessage) => {
     setIsLoading(true);
     try {
-      // EmailJS configuration - replace with your actual values
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
-
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS environment variables are missing");
-      }
-
-      const templateParams = {
-        from_name: data.name,
-        from_email: data.email,
-        subject: data.subject,
-        message: data.message,
-        to_email: "arnabmal665@gmail.com", // Your email
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      
+      // Simulate a send for demo-only frontend: show loading then success animation/toast
+      await new Promise((resolve) => setTimeout(resolve, 800));
       setIsSubmitted(true);
       form.reset();
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Message simulated",
+        description: "This is a frontend demo; the message was not actually sent.",
       });
     } catch (error) {
-      console.error("EmailJS error:", error);
+      console.error("Contact form error:", error);
       toast({
-        title: "Failed to send message",
-        description: "Please try again later or contact me directly at arnabmal665@gmail.com",
+        title: "Failed to simulate send",
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {

@@ -40,3 +40,8 @@ jobs:
         run: |
           echo "client/dist contents:"
           ls -la client/dist || true
+
+      - name: notify vercel
+        uses: vercel/repository-dispatch/actions/status@v1
+        with:
+          name: CI — build & typecheck

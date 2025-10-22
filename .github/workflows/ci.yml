@@ -1,5 +1,11 @@
 name: CI — build & typecheck
 
+# Grant the workflow explicit permissions so the notify step can set commit statuses
+permissions:
+  contents: read
+  statuses: write
+  checks: write
+
 on:
   push:
     branches: [ main ]

@@ -1,0 +1,42 @@
+name: CI — build & typecheck
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install & build shared
+        run: |
+          npm ci --prefix shared
+          npm --prefix shared run build
+
+      - name: Install & build server (typecheck)
+        run: |
+          npm ci --prefix server
+          npm --prefix server run build
+
+      - name: Install & build client (production)
+        run: |
+          npm ci --prefix client
+          npm --prefix client run build
+
+      - name: Sanity - list publish folder
+        run: |
+          echo "client/dist contents:"
+          ls -la client/dist || true

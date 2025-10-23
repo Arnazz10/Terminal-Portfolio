@@ -3,14 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "alias": {
-    "@/": "./src/"
-  },
   "scripts": {
-    "dev": "parcel index.html --port 3000",
-    "build": "parcel build index.html --public-url ./",
+    "dev": "vite --port 3000",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "parcel serve dist"
+    "preview": "vite preview",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
@@ -29,17 +27,19 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@types/node": "^20.19.23",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
-    "parcel": "^2.12.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^8.39.1"
+    "typescript-eslint": "^8.39.1",
+    "vite": "^5.4.21"
   }
 }

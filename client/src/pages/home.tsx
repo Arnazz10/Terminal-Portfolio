@@ -347,7 +347,7 @@ export default function Home() {
                       <Button 
                         className="bg-primary text-primary-foreground hover:bg-accent" 
                         data-testid="button-download-resume"
-                        onClick={() => window.open('https://drive.google.com/uc?export=download&id=1qY-0bg3FjAsCF4GFXLx54k97BVs5tf8J', '_blank')}
+                        onClick={() => window.open('https://drive.google.com/uc?export=download&id=1Y4GAddhaZUvMsDrR-a5FmLssTZP2nCK5', '_blank')}
                       >
                         <Download className="w-4 h-4 mr-2" />
                         Download PDF
@@ -356,7 +356,7 @@ export default function Home() {
                         variant="outline"   
                         className="border-border hover:bg-secondary" 
                         data-testid="button-view-resume"
-                        onClick={() => window.open('https://drive.google.com/file/d/1qY-0bg3FjAsCF4GFXLx54k97BVs5tf8J/view?usp=sharing', '_blank')}
+                        onClick={() => window.open('https://drive.google.com/file/d/1Y4GAddhaZUvMsDrR-a5FmLssTZP2nCK5/view?usp=sharing', '_blank')}
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         Quick View

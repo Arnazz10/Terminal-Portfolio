@@ -115,22 +115,22 @@ export default function Home() {
 
   const experiences = [
     {
-      title: "Web Designer",
+      title: "SDE Intern",
       company: "Xtenal Technologies",
       period: "Mar 2025 - May 2025",
       responsibilities: [
-        "Designed and optimized 10+ web applications, enhancing user engagement by 60% through improved UI/UX designs.",
-        "Led the front-end development of 5+ innovative tech solutions, reducing load times by 40% and improving responsiveness across all devices."
+        "Built and optimized 10+ full-stack web applications using React.js, Spring Boot, and RESTful APIs, improving system efficiency and user engagement by 60%.",
+        "Enhanced application performance by 40% through backend optimization, modular code design, and CI/CD integration using GitHub Actions and Docker."
       ],
       current: true
     },
     {
-      title: "Design Intern",
+      title: "SDE intern",
       company: "Vague28 OPC PVT LTD",
       period: "Nov 2024 - Jan 2025",
       responsibilities: [
-        "Created 50+ graphic designs for song promotions, leading to a 35% increase in audience engagement across social media platforms.",
-        "Designed and executed 15+ targeted marketing campaigns for Indie Music artists, boosting their social media reach by 40%."
+        "Developed and deployed 10+ automation tools and internal dashboards using React.js and Node.js, improving content delivery workflows and boosting operational efficiency by 35%.",
+        "Integrated APIs and optimized backend processes for music campaign analytics, enhancing data accuracy and campaign performance by 40%."
       ],
       current: false
     },
@@ -347,7 +347,7 @@ export default function Home() {
                       <Button 
                         className="bg-primary text-primary-foreground hover:bg-accent" 
                         data-testid="button-download-resume"
-                        onClick={() => window.open('https://drive.google.com/uc?export=download&id=1Y4GAddhaZUvMsDrR-a5FmLssTZP2nCK5', '_blank')}
+                        onClick={() => window.open('https://drive.google.com/uc?export=download&id=17QcxtTt_lO__-_Lztio95nTNrCwDPJzr', '_blank')}
                       >
                         <Download className="w-4 h-4 mr-2" />
                         Download PDF
@@ -356,7 +356,7 @@ export default function Home() {
                         variant="outline"   
                         className="border-border hover:bg-secondary" 
                         data-testid="button-view-resume"
-                        onClick={() => window.open('https://drive.google.com/file/d/1Y4GAddhaZUvMsDrR-a5FmLssTZP2nCK5/view?usp=sharing', '_blank')}
+                        onClick={() => window.open('https://drive.google.com/file/d/17QcxtTt_lO__-_Lztio95nTNrCwDPJzr/view?usp=sharing', '_blank')}
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         Quick View

@@ -12,7 +12,7 @@ It gives visitors a hacker-type CLI experience while exploring your work
 
 ## ✨ Features  
 - ⚡ **Real terminal feel** — commands, typing effect, blinking cursor  
-- 🔍 **About, Skills, Projects, Socials** accessible through commands  
+- 🔍 **About, Skills, Projects, Socials** accessible through command
 - 🌓 **Dark theme** for an authentic CLI vibe  
 - 📱 **Responsive design**  
 - 🌐 **Runs fully in browser** (no backend required)

@@ -6,7 +6,7 @@ Fast, minimal, and inspired by real terminal aesthetics.
 
 ## 🚀 Overview  
 Terminal Portfolio is a web-based terminal interface showcasing your profile, skills, experience, and projects.  
-It gives visitors a hacker-type CLI experience while exploring your work.
+It gives visitors a hacker-type CLI experience while exploring your work
 
 ---
 

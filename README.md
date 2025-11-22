@@ -37,6 +37,6 @@ git clone https://github.com/Arnazz10/Terminal-Portfolio.git
 cd Terminal-Portfolio
 
 # Open the index.html file
-# (no server needed, works standalone)
+# (no server needed, works standalo)
 
 

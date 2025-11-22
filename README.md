@@ -1,6 +1,6 @@
 # 🖥️ Terminal Portfolio  
 A command-line-styled interactive portfolio that runs in the browser
-Fast, minimal, and inspired by real terminal aesthetics.
+Fast, minimal, and inspired by real terminal aesthetics in it.
 
 ---
 

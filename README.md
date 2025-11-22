@@ -24,7 +24,7 @@ It gives visitors a hacker-type CLI experience while exploring your work
 - **CSS3** (minimal, custom styling)  
 - **JavaScript (ES6)**  
 - **Typed.js** (optional: typing effect)  
-- **Local JSON config** for easy edits.
+- **Local JSON config** for easy edits
 
 ---
 
